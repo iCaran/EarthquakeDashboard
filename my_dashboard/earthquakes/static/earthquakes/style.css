@@ -1,0 +1,55 @@
+/* earthquakes/static/earthquakes/style.css */
+
+/* Make the hero text bigger on smaller screens */
+@media (max-width: 576px) {
+  .display-4 {
+    font-size: 2rem;
+  }
+}
+
+/* Additional styling for your table, filters, etc. */
+#earthquakeTable th {
+  cursor: pointer; /* indicates clickable for sorting */
+}
+
+#map {
+  background-color: #eaeaea; /* placeholder background if Leaflet not loaded */
+}
+
+/* ... Add any other custom rules you want ... */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+table {
+    width: 90%;
+    margin: 1rem auto;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 0.75rem;
+    text-align: left;
+}
+
+th {
+    background-color: #f8f8f8;
+    cursor: pointer;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}

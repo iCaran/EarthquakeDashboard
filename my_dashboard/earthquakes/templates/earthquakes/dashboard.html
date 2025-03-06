@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Latest 500 Earthquakes</title>
+  <!-- Bootstrap CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  >
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'earthquakes/style.css' %}">
+</head>
+<body>
+  <!-- Navigation / Header Section -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="#">Earthquake Dashboard</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section (Optional) -->
+  <section class="bg-primary text-white py-5 mb-4">
+    <div class="container">
+      <h1 class="display-4">Latest 500 Earthquakes</h1>
+      <p class="lead">Stay informed with recent seismic activity around the globe.</p>
+    </div>
+  </section>
+
+  <div class="container mb-5">
+
+    <!-- Filters Row -->
+    <div class="row g-3 mb-3">
+      <!-- Search by Location -->
+      <div class="col-sm-6 col-md-4">
+        <label for="locationFilter" class="form-label">Filter by Location</label>
+        <input
+          type="text"
+          class="form-control"
+          id="locationFilter"
+          placeholder="e.g. Alaska"
+        >
+      </div>
+      <!-- Magnitude Range -->
+      <div class="col-sm-6 col-md-4">
+        <label for="magnitudeFilter" class="form-label">Minimum Magnitude</label>
+        <input
+          type="number"
+          step="0.1"
+          class="form-control"
+          id="magnitudeFilter"
+          placeholder="e.g. 2.5"
+        >
+      </div>
+      <!-- Filter Button -->
+      <div class="col-sm-12 col-md-4 d-flex align-items-end">
+        <button class="btn btn-success w-100" id="applyFilters">
+          Apply Filters
+        </button>
+      </div>
+    </div>
+
+    <!-- Table Container -->
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover" id="earthquakeTable">
+        <thead class="table-light">
+          <tr>
+            <th scope="col" data-type="time">Time</th>
+            <th scope="col">Place</th>
+            <th scope="col" data-type="number">Magnitude</th>
+            <th scope="col">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for quake in earthquakes %}
+          <tr>
+            <td>{{ quake.readable_time }}</td>
+            <td>{{ quake.properties.place }}</td>
+            <td>{{ quake.properties.mag }}</td>
+            <td>
+              <a href="{{ quake.properties.url }}" target="_blank">More Info</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination Controls (Optional) -->
+    <div class="d-flex justify-content-between align-items-center mt-3">
+      <div>
+        <button class="btn btn-outline-primary btn-sm" id="prevPage" disabled>
+          Previous
+        </button>
+        <button class="btn btn-outline-primary btn-sm" id="nextPage" disabled>
+          Next
+        </button>
+      </div>
+      <div>
+        <span id="pageInfo"></span>
+      </div>
+    </div>
+
+    <!-- Optional Map Section -->
+    <div class="mt-5" id="map" style="height: 500px;">
+      <!-- A Leaflet map can go here if you want to display earthquake locations -->
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-light py-3 mt-auto">
+    <div class="container">
+      <p class="mb-0 text-center">&copy; {{ year|default:2025 }} Earthquake Dashboard. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Your custom JS -->
+  <script src="{% static 'earthquakes/script.js' %}"></script>
+</body>
+</html>
