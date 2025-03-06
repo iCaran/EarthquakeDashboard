@@ -127,5 +127,35 @@ document.addEventListener("DOMContentLoaded", function() {
         .bindPopup(`${item.place}<br>Mag: ${item.mag}<br>${item.time}`);
     });
     */
+    // --- Leaflet Map Integration ---
+  // Parse the earthquake data from the JSON script tag
+  const earthquakeData = JSON.parse(document.getElementById("earthquake-data").textContent);
+
+  // Initialize the map centered roughly on the world
+  const map = L.map('map').setView([20, 0], 2);
+
+  // Add OpenStreetMap tiles
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Loop through each earthquake and add a marker
+  earthquakeData.forEach(quake => {
+      // Each quake's coordinates: [longitude, latitude, depth]
+      const coords = quake.geometry.coordinates;
+      const lon = coords[0];
+      const lat = coords[1];
+      
+      // Create a marker and add it to the map
+      const marker = L.marker([lat, lon]).addTo(map);
+      
+      // Bind a popup with earthquake details
+      marker.bindPopup(`
+          <strong>${quake.properties.place}</strong><br>
+          Magnitude: ${quake.properties.mag}<br>
+          Time: ${quake.readable_time}
+      `);
+  });
+
   });
   

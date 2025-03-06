@@ -9,6 +9,9 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
   >
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{% static 'earthquakes/style.css' %}">
 </head>
@@ -20,7 +23,7 @@
     </div>
   </nav>
 
-  <!-- Hero Section (Optional) -->
+  <!-- Hero Section -->
   <section class="bg-primary text-white py-5 mb-4">
     <div class="container">
       <h1 class="display-4">Latest 500 Earthquakes</h1>
@@ -29,35 +32,18 @@
   </section>
 
   <div class="container mb-5">
-
     <!-- Filters Row -->
     <div class="row g-3 mb-3">
-      <!-- Search by Location -->
       <div class="col-sm-6 col-md-4">
         <label for="locationFilter" class="form-label">Filter by Location</label>
-        <input
-          type="text"
-          class="form-control"
-          id="locationFilter"
-          placeholder="e.g. Alaska"
-        >
+        <input type="text" class="form-control" id="locationFilter" placeholder="e.g. Alaska">
       </div>
-      <!-- Magnitude Range -->
       <div class="col-sm-6 col-md-4">
         <label for="magnitudeFilter" class="form-label">Minimum Magnitude</label>
-        <input
-          type="number"
-          step="0.1"
-          class="form-control"
-          id="magnitudeFilter"
-          placeholder="e.g. 2.5"
-        >
+        <input type="number" step="0.1" class="form-control" id="magnitudeFilter" placeholder="e.g. 2.5">
       </div>
-      <!-- Filter Button -->
       <div class="col-sm-12 col-md-4 d-flex align-items-end">
-        <button class="btn btn-success w-100" id="applyFilters">
-          Apply Filters
-        </button>
+        <button class="btn btn-success w-100" id="applyFilters">Apply Filters</button>
       </div>
     </div>
 
@@ -87,15 +73,11 @@
       </table>
     </div>
 
-    <!-- Pagination Controls (Optional) -->
+    <!-- Pagination Controls -->
     <div class="d-flex justify-content-between align-items-center mt-3">
       <div>
-        <button class="btn btn-outline-primary btn-sm" id="prevPage" disabled>
-          Previous
-        </button>
-        <button class="btn btn-outline-primary btn-sm" id="nextPage" disabled>
-          Next
-        </button>
+        <button class="btn btn-outline-primary btn-sm" id="prevPage" disabled>Previous</button>
+        <button class="btn btn-outline-primary btn-sm" id="nextPage" disabled>Next</button>
       </div>
       <div>
         <span id="pageInfo"></span>
@@ -104,9 +86,8 @@
 
     <!-- Optional Map Section -->
     <div class="mt-5" id="map" style="height: 500px;">
-      <!-- A Leaflet map can go here if you want to display earthquake locations -->
+      <!-- The Leaflet map will render here -->
     </div>
-
   </div>
 
   <!-- Footer -->
@@ -116,9 +97,14 @@
     </div>
   </footer>
 
-  <!-- Bootstrap JS -->
+  <!-- Include Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Your custom JS -->
+  <!-- Include Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Your Custom JS -->
   <script src="{% static 'earthquakes/script.js' %}"></script>
+  <!-- Output earthquake data as JSON -->
+  {{ earthquakes|json_script:"earthquake-data" }}
 </body>
 </html>
