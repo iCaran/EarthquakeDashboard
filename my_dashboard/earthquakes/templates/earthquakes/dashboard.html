@@ -15,13 +15,18 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{% static 'earthquakes/style.css' %}">
 </head>
-<body>
+<body class="light-mode">
   <!-- Navigation / Header Section -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
       <a class="navbar-brand fw-bold" href="#">Earthquake Dashboard</a>
+      <!-- Dark Mode Toggle -->
+      <button id="toggleTheme" class="btn btn-sm btn-outline-light ms-auto">
+        Dark Mode
+      </button>
     </div>
   </nav>
+  
 
   <!-- Hero Section -->
   <section class="bg-primary text-white py-5 mb-4">

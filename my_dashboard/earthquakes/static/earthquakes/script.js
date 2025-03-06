@@ -159,3 +159,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
   });
   
+  document.getElementById("toggleTheme").addEventListener("click", function() {
+    const body = document.body;
+    body.classList.toggle("dark-mode");
+    body.classList.toggle("light-mode");
+    
+    // Update navbar theme as well
+    const navbar = document.querySelector(".navbar");
+    navbar.classList.toggle("dark-mode");
+    navbar.classList.toggle("light-mode");
+    
+    // Optionally, change the button text
+    this.textContent = body.classList.contains("dark-mode") ? "Light Mode" : "Dark Mode";
+  });
+  

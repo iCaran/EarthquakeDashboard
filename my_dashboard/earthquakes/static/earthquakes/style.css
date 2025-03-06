@@ -53,3 +53,127 @@ th {
 tr:hover {
     background-color: #f1f1f1;
 }
+
+/* ======================= */
+/*         Light Mode      */
+/* ======================= */
+body.light-mode {
+    background-color: #F8FAFC;
+    color: #2C3E50;
+  }
+  
+  body.light-mode .navbar {
+    background-color: #3498DB; /* Vibrant blue */
+    border-bottom: 1px solid #E0E0E0;
+  }
+  
+  body.light-mode .table {
+    background-color: #FFFFFF;
+    color: #2C3E50;
+  }
+  
+  body.light-mode .table thead {
+    background-color: #F2F2F2;
+  }
+  
+  body.light-mode .table-bordered > :not(caption) > * > * {
+    border-color: #E0E0E0;
+  }
+  
+  body.light-mode #applyFilters,
+  body.light-mode #toggleTheme,
+  body.light-mode #prevPage,
+  body.light-mode #nextPage {
+    background-color: #27AE60; /* Emerald green */
+    color: #FFFFFF;
+    border: none;
+  }
+  
+  body.light-mode a {
+    color: #3498DB;
+  }
+  
+  /* Hover/Focus states for light mode buttons */
+  body.light-mode #applyFilters:hover,
+  body.light-mode #toggleTheme:hover,
+  body.light-mode #prevPage:hover,
+  body.light-mode #nextPage:hover {
+    background-color: #1D9450; /* Slightly darker green */
+  }
+  
+  /* ======================= */
+  /*         Dark Mode       */
+  /* ======================= */
+  body.dark-mode {
+    background-color: #1F1F1F;
+    color: #ECF0F1;
+  }
+  
+  body.dark-mode .navbar {
+    background-color: #273746; /* Dark gray-blue */
+    border-bottom: 1px solid #444444;
+  }
+  
+  body.dark-mode .table {
+    background-color: #2C2C2C;
+    color: #ECF0F1;
+  }
+  
+  body.dark-mode .table thead {
+    background-color: #3A3A3A;
+  }
+  
+  body.dark-mode .table-bordered > :not(caption) > * > * {
+    border-color: #444444;
+  }
+  
+  body.dark-mode #applyFilters,
+  body.dark-mode #toggleTheme,
+  body.dark-mode #prevPage,
+  body.dark-mode #nextPage {
+    background-color: #27AE60; /* Keep emerald accent */
+    color: #FFFFFF;
+    border: none;
+  }
+  
+  body.dark-mode a {
+    color: #5DADE2; /* Lightened blue for links */
+  }
+  
+  /* Hover/Focus states for dark mode buttons */
+  body.dark-mode #applyFilters:hover,
+  body.dark-mode #toggleTheme:hover,
+  body.dark-mode #prevPage:hover,
+  body.dark-mode #nextPage:hover {
+    background-color: #1D9450; /* Slightly darker green */
+  }
+  
+  
+  tr:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+  }
+  
+  /* Animate the filter panel appearance */
+  .row.g-3 {
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeInUp 0.5s forwards;
+    animation-delay: 0.2s;
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  a:hover {
+    text-decoration: underline;
+    transition: text-decoration 0.3s ease;
+  }
+  
+  section.bg-primary {
+    background: linear-gradient(135deg, #007bff, #00aaff);
+  }
+  
