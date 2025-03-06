@@ -3,6 +3,8 @@
 An interactive **Django** web application that displays the **latest 500 earthquake records** from the [USGS API](https://earthquake.usgs.gov) on a **sortable table** and an **interactive Leaflet map**. Users can **filter** results by location or minimum magnitude, **paginate** through the data, and **toggle** between **light** and **dark** modes for a visually appealing experience.
 
 ---
+![Screenshot 2025-03-06 at 15-36-57 Latest 500 Earthquakes](https://github.com/user-attachments/assets/dee5b298-6c4c-4ccd-a563-9328812b83b3)
+---
 
 ## Features
 
